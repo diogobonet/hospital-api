@@ -17,9 +17,34 @@ public class PacienteController {
         this.service = service;
     }
 
-    @GetMapping(value = "/listar")
+    @GetMapping(path = "{id}")
+    public Object ObterPacientePorId(@PathVariable("id") Long id){
+        try {
+            return service.ObterPacientePorId(id);
+        }
+        catch (Exception ex){
+            return ex.getMessage();
+        }
+    }
+
+    @GetMapping(path = "{cpf}")
+    public Object ObterPacientePorCpf(@PathVariable("cpf") String cpf){
+        try{
+            return service.findPacienteByCpf(cpf);
+        }
+        catch (Exception ex){
+            return ex;
+        }
+    }
+
+    @GetMapping
     public List<Paciente> ListarPacientes(){
-        return service.ListarPacientes();
+        try {
+            return service.ListarPacientes();
+        }
+        catch (Exception ex){
+            throw ex;
+        }
     }
 
     @PostMapping
@@ -32,11 +57,6 @@ public class PacienteController {
         }
     }
 
-//    @PutMapping
-//    public Paciente AlterarPaciente(@RequestBody Paciente paciente){
-//        return service.AlterarPaciente(paciente);
-//    }
-//
     @DeleteMapping(path = "{id}")
     public void RemoverPaciente(@PathVariable("id") Long id){
         try{
