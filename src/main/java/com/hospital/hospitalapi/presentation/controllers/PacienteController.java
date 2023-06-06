@@ -23,8 +23,27 @@ public class PacienteController {
     }
 
     @PostMapping
-    public Paciente CriarPaciente(@RequestBody Paciente paciente){
-        service.CriarPaciente(paciente);
-        return paciente;
+    public Object CriarPaciente(@RequestBody Paciente paciente){
+        try{
+            return service.CriarPaciente(paciente);
+        }
+        catch (Exception ex){
+            return ex.getMessage();
+        }
+    }
+
+//    @PutMapping
+//    public Paciente AlterarPaciente(@RequestBody Paciente paciente){
+//        return service.AlterarPaciente(paciente);
+//    }
+//
+    @DeleteMapping(path = "{id}")
+    public void RemoverPaciente(@PathVariable("id") Long id){
+        try{
+            service.RemoverPaciente(id);
+        }
+        catch (Exception ex){
+            ex.getMessage();
+        }
     }
 }
