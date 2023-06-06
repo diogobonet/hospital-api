@@ -7,60 +7,60 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
-@RequestMapping(value = "/pacientes")
+@RestController // define que esta classe se trata de uma controladora
+@RequestMapping(value = "/pacientes") // define o caminho padrão da controladora, a partir daqui todas as subrotas definidas serão http://localhost:8080/swagger-ui/index.html#/pacientes/caminho-criado
 public class PacienteController {
-    private final PacienteService service;
+    private final PacienteService service; // faz a injeção de dependência do serviço realacionado ao paciente
 
     @Autowired
     public PacienteController(PacienteService service) {
         this.service = service;
     }
 
-    @GetMapping(path = "{id}")
-    public Object ObterPacientePorId(@PathVariable("id") Long id){
+    @GetMapping(path = "/obterporid/{id}") // define o caminho da requisição na API
+    public Object ObterPacientePorId(@PathVariable("id") Long id) //define o parâmetro que será utilizado na requisição, definido no caminho
+    {
         try {
-            return service.ObterPacientePorId(id);
+            return service.ObterPacientePorId(id); // faz a comunicação com o serviço, fazendo referência a um método descrito para buscar um paciente pelo Id retornando este mesmo paciente no retorno da API para visualização
         }
         catch (Exception ex){
             return ex.getMessage();
         }
     }
 
-    @GetMapping(path = "/obter/{cpf}")
-    public Object ObterPacientePorCpf(@PathVariable("cpf") String cpf){
+    @GetMapping(path = "/obterporcpf/{cpf}") // define o caminho da requisição na API
+    public Object ObterPacientePorCpf(@PathVariable("cpf") String cpf) //define o parâmetro que será utilizado na requisição, definido no caminho
+    {
         try{
-            return service.findPacienteByCpf(cpf);
+            return service.ObterPacientePorCpf(cpf);// faz a comunicação com o serviço, fazendo referência a um método descrito para obter um paciente pelo CPF retornando este mesmo paciente no retorno da API para visualização
         }
         catch (Exception ex){
-            return ex;
+            return ex.getMessage();
         }
     }
 
     @GetMapping
-    public List<Paciente> ListarPacientes(){
-        try {
-            return service.ListarPacientes();
-        }
-        catch (Exception ex){
-            throw ex;
-        }
+    public List<Paciente> ListarPacientes()
+    {
+        return service.ListarPacientes(); // faz a comunicação com o serviço, fazendo referência a um método descrito para buscar todos os pacientes retornando esta mesma lista no retorno da API para visualização
     }
 
     @PostMapping
-    public Object CriarPaciente(@RequestBody Paciente paciente){
+    public Object CriarPaciente(@RequestBody Paciente paciente) // define que a requisição será feita pelo corpo, levando um objeto inteiro ao invés de apenas um parâmetro no caminho
+    {
         try{
-            return service.CriarPaciente(paciente);
+            return service.CriarPaciente(paciente); // faz a comunicação com o serviço, fazendo referência a um método descrito para criar um paciente retornando este mesmo paciente no retorno da API para visualização
         }
         catch (Exception ex){
             return ex.getMessage();
         }
     }
 
-    @DeleteMapping(path = "{id}")
-    public void RemoverPaciente(@PathVariable("id") Long id){
+    @DeleteMapping(path = "/remover/{id}") // define o caminho da requisição na API
+    public void RemoverPaciente(@PathVariable("id") Long id) //define o parâmetro que será utilizado na requisição, definido no caminho
+    {
         try{
-            service.RemoverPaciente(id);
+            service.RemoverPaciente(id); // faz a comunicação com o serviço, utilizando um método descrito para retornar um paciente
         }
         catch (Exception ex){
             ex.getMessage();
