@@ -27,7 +27,7 @@ public class PacienteController {
         }
     }
 
-    @GetMapping(path = "{cpf}")
+    @GetMapping(path = "/obter/{cpf}")
     public Object ObterPacientePorCpf(@PathVariable("cpf") String cpf){
         try{
             return service.findPacienteByCpf(cpf);
