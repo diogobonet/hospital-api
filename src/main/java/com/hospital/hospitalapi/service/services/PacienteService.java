@@ -2,10 +2,12 @@ package com.hospital.hospitalapi.service.services;
 
 import com.hospital.hospitalapi.domain.entities.Paciente;
 import com.hospital.hospitalapi.repository.repositories.PacienteRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service // define que esta classe será uma fornecedora de serviço da aplicação(onde criamos a lógica de negócio)
@@ -41,6 +43,21 @@ public class PacienteService {
                 throw new IllegalStateException("Paciente já existe na base de dados.");
             }
             return repository.save(paciente); // pede para o repositório salvar esse ojeto na base de dados
+    }
+
+    @Transactional
+    public Object AlterarPaciente(Long id, String nome, String endereco){
+        Paciente paciente = repository.findById(id).orElseThrow(() -> new IllegalStateException("Paciente com o Id " + id + " não existe."));
+        if ((nome != null) && (nome.length() > 0) && (!Objects.equals(paciente.getNome(), nome)))
+            paciente.setNome(nome);
+
+        if ((endereco != null) && (endereco.length() > 0)){
+            if (Objects.equals(paciente.getEndereco(), endereco))
+                throw new IllegalStateException("Endereço precisa ser diferente do existente.");
+
+            paciente.setEndereco(endereco);
+        }
+        return paciente;
     }
 
     public void RemoverPaciente(Long id) {

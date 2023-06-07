@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController // define que esta classe se trata de uma controladora
-@RequestMapping(value = "/pacientes") // define o caminho padrão da controladora, a partir daqui todas as subrotas definidas serão http://localhost:8080/swagger-ui/index.html#/pacientes/caminho-criado
+@RequestMapping(value = "pacientes") // define o caminho padrão da controladora, a partir daqui todas as subrotas definidas serão http://localhost:8080/swagger-ui/index.html#/pacientes/caminho-criado
 public class PacienteController {
     private final PacienteService service; // faz a injeção de dependência do serviço realacionado ao paciente
 
@@ -53,6 +53,19 @@ public class PacienteController {
         }
         catch (Exception ex){
             return ex.getMessage();
+        }
+    }
+
+    @PutMapping(path = "/alterar/{id}")
+    public Object AlterarPaciente(
+            @PathVariable("id") Long id,
+            @RequestParam(required = false) String nome,
+            @RequestParam(required = false) String endereco){
+        try{
+            return service.AlterarPaciente(id, nome, endereco);
+        }
+        catch (Exception ex){
+            return ex;
         }
     }
 
