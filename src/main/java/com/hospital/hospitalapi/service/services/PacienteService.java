@@ -6,6 +6,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -38,9 +39,16 @@ public class PacienteService {
     }
 
     public Object CriarPaciente(Paciente paciente) {
-            Optional<Paciente> pacienteEncontrado = repository.findById(paciente.getId()); // faz comunicação com o repositório para reportar um paciente pelo Id dentro da base de dados
-            if (pacienteEncontrado.isPresent()){
-                throw new IllegalStateException("Paciente já existe na base de dados.");
+            Optional<Paciente> pacientePorId = repository.findById(paciente.getId());
+            Optional<Paciente> pacientePorCpf = repository.ObterPacientePorCpf(paciente.getCPF());// faz comunicação com o repositório para reportar um paciente pelo Id dentro da base de dados
+            if (pacientePorId.isPresent()){
+                throw new IllegalStateException("Paciente com id " + pacientePorId.get().getId() + "já existe na base de dados.");
+            }
+            if(pacientePorCpf.isPresent()){
+                throw new IllegalStateException("Paciente com CPF " + pacientePorCpf.get().getCPF() + " já existe na base de dados.");
+            }
+            if(paciente.getDataNascimento().equals(LocalDate.now())){
+                throw new IllegalStateException("Data de nascimento precisa ser maior que a data atual.");
             }
             return repository.save(paciente); // pede para o repositório salvar esse ojeto na base de dados
     }
