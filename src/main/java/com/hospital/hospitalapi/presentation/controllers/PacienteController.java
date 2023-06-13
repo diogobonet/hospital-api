@@ -12,7 +12,7 @@ import java.util.List;
 public class PacienteController {
     private final PacienteService service; // faz a injeção de dependência do serviço realacionado ao paciente
 
-    @Autowired
+    @Autowired //para contruir a dependência do serviço
     public PacienteController(PacienteService service) {
         this.service = service;
     }
@@ -65,7 +65,18 @@ public class PacienteController {
             return service.AlterarPaciente(id, nome, endereco);
         }
         catch (Exception ex){
-            return ex;
+            return ex.getMessage();
+        }
+    }
+
+    @PutMapping(path = "/alterarstatus/{id}")
+    public Object AlterarStatusPaciente(@PathVariable("id") Long id,
+                                        @RequestParam(required = true) String status){
+        try{
+            return service.AlterarStatusPaciente(id, status);
+        }
+        catch (Exception ex){
+            return ex.getMessage();
         }
     }
 
@@ -78,5 +89,10 @@ public class PacienteController {
         catch (Exception ex){
             ex.getMessage();
         }
+    }
+
+    @DeleteMapping(path = "/removerporcpf/{cpf}")
+    public void RemoverPacientePorCpf(@PathVariable("cpf") String cpf){
+          service.RemoverPacientePorCpf(cpf);
     }
 }

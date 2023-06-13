@@ -11,36 +11,36 @@ import java.util.List;
 @Table(name = "Paciente")
 public class Paciente extends Pessoa {
     private boolean PlanoSaude;
-    private List<String> Alergias;
-    private boolean Vivo;
+        private List<String> Alergias;
+        private boolean Vivo;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name= "Status")
-    private PacienteStatusEnum Status;
+        @Enumerated(EnumType.STRING)
+        @Column(name= "Status")
+        private PacienteStatusEnum Status;
 
     public Paciente (){
 
-    }
+        }
 
     public Paciente(
-            String nome,
-            LocalDate dataNascimento,
-            String sexo,
-            String endereco,
-            String CPF,
-            boolean planoSaude,
-            List<String> alergias,
-            boolean vivo,
-            PacienteStatusEnum status) {
-        super(
-                nome,
-                dataNascimento,
-                sexo,
-                endereco,
-                CPF);
-        this.PlanoSaude = planoSaude;
-        this.Alergias = alergias;
-        this.Vivo = vivo;
+                String nome,
+                LocalDate dataNascimento,
+                String sexo,
+                String endereco,
+                String CPF,
+        boolean planoSaude,
+        List<String> alergias,
+        boolean vivo,
+        PacienteStatusEnum status) {
+            super(
+                    nome,
+                    dataNascimento,
+                    sexo,
+                    endereco,
+                    CPF);
+            this.PlanoSaude = planoSaude;
+            this.Alergias = alergias;
+            this.Vivo = vivo;
         this.Status = status;
     }
 
@@ -66,6 +66,16 @@ public class Paciente extends Pessoa {
 
     public void setVivo(boolean vivo) {
         Vivo = vivo;
+    }
+
+    @Override
+    public String toString() {
+        return "Paciente{" +
+                "PlanoSaude=" + PlanoSaude +
+                ", Alergias=" + Alergias +
+                ", Vivo=" + Vivo +
+                ", Status=" + Status +
+                '}';
     }
 
     public PacienteStatusEnum getStatus() {
