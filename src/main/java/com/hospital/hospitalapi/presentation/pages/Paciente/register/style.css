@@ -12,20 +12,20 @@
     flex-direction: column;
     padding: 10px;
   }
-
-h1 {
+  
+  h1 {
     margin-bottom: 10px;
-}
-
-form {
+  }
+  
+  form {
     display: flex; flex-direction: column; gap: 15px;
-}
-
-input, select {
+  }
+  
+  input, select {
     padding: 5px;
-}
-
-a {
+  }
+  
+  a {
     text-align: center;
-}
+  }
 
