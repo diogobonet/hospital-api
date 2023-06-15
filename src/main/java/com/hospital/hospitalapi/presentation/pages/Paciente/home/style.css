@@ -19,3 +19,18 @@ header {
     padding: 10px;
 }
 
+h1 {
+    text-align: center;
+    font-size: 19px;
+}
+
+.choose {
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
+    padding: 20px;
+}
+
+.section-divs {
+    display: flex; flex-direction: row;
+    justify-content: center; align-items: center; text-align: center; height: 80vh;
+}
