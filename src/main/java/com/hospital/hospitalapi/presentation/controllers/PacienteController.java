@@ -2,11 +2,13 @@ package com.hospital.hospitalapi.presentation.controllers;
 
 import com.hospital.hospitalapi.domain.entities.Paciente;
 import com.hospital.hospitalapi.service.services.PacienteService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Tag(name = "Paciente", description = "Controladora responsável pelo escopo do paciente.")
 @RestController // define que esta classe se trata de uma controladora
 @RequestMapping(value = "pacientes") // define o caminho padrão da controladora, a partir daqui todas as subrotas definidas serão http://localhost:8080/swagger-ui/index.html#/pacientes/caminho-criado
 public class PacienteController {
@@ -55,6 +57,16 @@ public class PacienteController {
             return ex.getMessage();
         }
     }
+    @PutMapping(path = "/alterarstatus/{id}")
+    public Object AlterarStatusPaciente(@PathVariable("id") Long id,
+                                        @RequestParam(required = true) String status){
+        try{
+            return service.AlterarStatusPaciente(id, status);
+        }
+        catch (Exception ex){
+            return ex.getMessage();
+        }
+    }
 
     @PutMapping(path = "/alterar/{id}")
     public Object AlterarPaciente(
@@ -69,16 +81,6 @@ public class PacienteController {
         }
     }
 
-    @PutMapping(path = "/alterarstatus/{id}")
-    public Object AlterarStatusPaciente(@PathVariable("id") Long id,
-                                        @RequestParam(required = true) String status){
-        try{
-            return service.AlterarStatusPaciente(id, status);
-        }
-        catch (Exception ex){
-            return ex.getMessage();
-        }
-    }
 
     @DeleteMapping(path = "/remover/{id}") // define o caminho da requisição na API
     public void RemoverPaciente(@PathVariable("id") Long id) //define o parâmetro que será utilizado na requisição, definido no caminho

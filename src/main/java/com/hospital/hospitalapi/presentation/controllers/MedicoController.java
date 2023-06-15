@@ -2,11 +2,13 @@ package com.hospital.hospitalapi.presentation.controllers;
 
 import com.hospital.hospitalapi.domain.entities.Medico;
 import com.hospital.hospitalapi.service.services.MedicoService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Tag(name = "Médico", description = "Controladora responsável pelo escopo do médico.")
 @RestController
 @RequestMapping(value = "medicos")
 public class MedicoController {

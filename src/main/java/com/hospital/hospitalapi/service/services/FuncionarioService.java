@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -24,6 +25,10 @@ public class FuncionarioService {
         return funcionario;
     }
 
+    public List<Funcionario> ListarFuncionarios(){
+        return repository.findAll();
+    }
+
     public Object CriarFuncionario(Funcionario funcionario) {
         Optional<Funcionario> funcPorCpf = repository.ObterFuncionarioPorCpf(funcionario.getCPF());
         if (funcPorCpf.isPresent())
@@ -39,8 +44,15 @@ public class FuncionarioService {
         Optional<Funcionario> funcionario = repository.ObterFuncionarioPorCpf(cpf);
         if (funcionario.isPresent())
             repository.deleteById(funcionario.get().getId());
-        else {
+        else
             throw new IllegalStateException("Funcionário com o CPF " + cpf + " não existe.");
-        }
+    }
+
+    public void RemoverFuncionarioPorId(Long id) {
+        Optional<Funcionario> funcionario = repository.findById(id);
+        if (funcionario.isPresent())
+            repository.deleteById(id);
+        else
+            throw new IllegalStateException("Funcionário com Id " + id + " não existe.");
     }
 }
