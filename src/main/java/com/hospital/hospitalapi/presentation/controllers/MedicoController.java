@@ -33,7 +33,6 @@ public class MedicoController {
         return service.ListarMedicos(); // faz a comunicação com o serviço, fazendo referência a um método descrito para buscar todos os pacientes retornando esta mesma lista no retorno da API para visualização
     }
 
-
     @PostMapping(path = "/criar")
     public Object CriarMedico(@RequestBody Medico medico) // define que a requisição será feita pelo corpo, levando um objeto inteiro ao invés de apenas um parâmetro no caminho
     {
@@ -45,8 +44,24 @@ public class MedicoController {
         }
     }
 
+    @PutMapping(path = "/alterarespecialidade/{crm}")
+    public Object AlterarEspecialidade(@PathVariable("crm") String crm,
+                                     @RequestParam(required = true) String especialidade){
+        try {
+            return service.AlterarEspecialidade(crm, especialidade);
+        }
+        catch (Exception ex){
+            return ex.getMessage();
+        }
+    }
+
     @DeleteMapping(path = "/removerporcrm/{crm}")
     public void RemoverMedicoPorCrm(@PathVariable("crm") String crm) {
         service.RemoverMedicoPorCrm(crm);
+    }
+
+    @DeleteMapping(path = "/removerporid/{id}")
+    public void RemoverMedicoPorId(@PathVariable("id") Long id){
+        service.RemoverMedicoPorId(id);
     }
 }

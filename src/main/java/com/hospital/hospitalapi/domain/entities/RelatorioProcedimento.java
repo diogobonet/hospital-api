@@ -10,12 +10,10 @@ import java.time.LocalDate;
 @Table(name = "RelatorioProcedimento")
 public class RelatorioProcedimento extends Procedimento {
     public RelatorioProcedimento(
-            int codigo,
             LocalDate dataAgendada,
             Paciente paciente,
             Funcionario funcionario) {
         super(
-                codigo,
                 dataAgendada,
                 paciente,
                 funcionario);

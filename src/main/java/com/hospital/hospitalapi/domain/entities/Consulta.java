@@ -14,14 +14,12 @@ public class Consulta extends Procedimento {
     private String Laudo;
 
     public Consulta(
-            int codigo,
             LocalDate dataAgendada,
             Paciente paciente,
             Funcionario funcionario,
             Medico medicoResponsavel,
             String laudo) {
         super(
-                codigo,
                 dataAgendada,
                 paciente,
                 funcionario);

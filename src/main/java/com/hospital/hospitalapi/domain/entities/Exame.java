@@ -16,14 +16,12 @@ public class Exame extends Procedimento {
     private String Resultado;
 
     public Exame(
-            int codigo,
             LocalDate dataAgendada,
             Paciente paciente,
             Funcionario funcionario,
             TipoExameEnum tipo,
             String resultado) {
         super(
-                codigo,
                 dataAgendada,
                 paciente,
                 funcionario);

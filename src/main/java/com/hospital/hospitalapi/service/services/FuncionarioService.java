@@ -55,4 +55,15 @@ public class FuncionarioService {
         else
             throw new IllegalStateException("Funcionário com Id " + id + " não existe.");
     }
+
+    public Object AlterarSalarioFuncionario(Long id, double salario) {
+        Funcionario funcionario = repository.findById(id).orElseThrow(() -> new IllegalStateException("Funcionário com Id: " + id + " não existe na base de dados."));
+        if (salario == funcionario.getSalario() || salario <= 0)
+            funcionario.setSalario(salario);
+        else {
+            throw new IllegalStateException("Erro ao alterar o salário: salário precisa ser maior que o atual ou precisa ser informado algum valor.");
+        }
+
+        return funcionario;
+    }
 }

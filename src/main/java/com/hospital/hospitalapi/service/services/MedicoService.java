@@ -1,6 +1,7 @@
 package com.hospital.hospitalapi.service.services;
 
 import com.hospital.hospitalapi.domain.entities.Medico;
+import com.hospital.hospitalapi.domain.enums.MedicoEspecialidadeEnum;
 import com.hospital.hospitalapi.repository.repositories.MedicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -48,5 +49,25 @@ public class MedicoService {
         else {
             throw new IllegalStateException("Médico com o CRM " + crm + " não existe.");
         }
+    }
+
+    public void RemoverMedicoPorId(Long id) {
+        Optional<Medico> medico = repository.findById(id);
+        if (medico.isPresent())
+            repository.delete(medico.get());
+        else {
+            throw new IllegalStateException("Médico com Id: " + id + " não existe.");
+        }
+    }
+
+    public Object AlterarEspecialidade(String crm, String especialidade) {
+        Medico medico = repository.ObterMedicoPorCrm(crm).orElseThrow(() -> new IllegalStateException("Médico com CRM: " + crm + " não existe."));
+        if (especialidade != null)
+            medico.setEspecialidade(MedicoEspecialidadeEnum.valueOf(especialidade));
+        else {
+            throw new IllegalStateException("Especialidade precisa ser informada.");
+        }
+
+        return medico;
     }
 }

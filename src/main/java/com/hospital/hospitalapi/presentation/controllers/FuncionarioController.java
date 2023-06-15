@@ -42,6 +42,17 @@ public class FuncionarioController {
         }
     }
 
+    @PutMapping(path = "/alterar/{id}")
+    public Object AlterarSalarioFuncionario(@PathVariable("id") Long id,
+                                            @RequestParam(required = true) double salario){
+        try {
+            return service.AlterarSalarioFuncionario(id, salario);
+        }
+        catch (Exception ex) {
+            return ex.getMessage();
+        }
+    }
+
     @DeleteMapping(path = "/removerporcpf/{cpf}")
     public void RemoverFuncionarioPorCpf(@PathVariable("cpf") String cpf) {
         service.RemoverFuncionarioPorCpf(cpf);
