@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <title>Cirurgia | HospitalAPI</title>
+    <title>Exames | HospitalAPI</title>
 </head>
 <body>
     <header>
@@ -16,19 +16,19 @@
 
     <main>
         <div class="top">
-            <h1>Cirurgias</h1>
-            <a href="">Agendar uma cirurgia</a>
+            <h1>Exames</h1>
+            <a href="">Agendar um exame</a>
         </div>
 
-        <h2>Cirurgias agendadas</h2>
+        <h2>Exames agendados</h2>
         <table>
             <thead>
               <tr>
                 <th>Código</th>
                 <th>Data</th>
                 <th>Paciente</th>
-                <th>Médico responsável</th>
-                <th>Observações</th>
+                <th>Médico</th>
+                <th>Tipo de Exame</th>
               </tr>
             </thead>
             <tbody>
@@ -37,7 +37,7 @@
                 <td>24/02/2023</td>
                 <td>João Silva</td>
                 <td>Dr. Carlos</td>
-                <td>Alergia a pólen</td>
+                <td>Prostata</td>
                 <td><a href="">Editar</a></td>
                 <td><a href="">Apagar</a></td>
               </tr>

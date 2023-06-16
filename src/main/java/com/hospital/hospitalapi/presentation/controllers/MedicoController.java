@@ -5,6 +5,7 @@ import com.hospital.hospitalapi.service.services.MedicoService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -27,6 +28,14 @@ public class MedicoController {
             return ex.getMessage();
         }
     }
+
+/*    @GetMapping("/")
+    public ModelAndView index(){
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("pages/Administrador/adm");
+        return mv;
+    }
+*/
 
     @GetMapping
     public List<Medico> ListarMedicos() {

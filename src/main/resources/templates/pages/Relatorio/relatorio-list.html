@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <title>Funcionários | HospitalAPI</title>
+    <title>Prontuário | HospitalAPI</title>
 </head>
 <body>
     <header>
@@ -16,28 +16,26 @@
 
     <main>
         <div class="top">
-            <h1>Funcionários</h1>
-            <a href="">Cadastrar um novo funcionário</a>
+            <h1>Relatórios</h1>
+            <a href="">Fazer um relatório</a>
         </div>
 
-        <h2>Funcionários ativos</h2>
+        <h2>Relatório</h2>
         <table>
             <thead>
               <tr>
-                <th>Nome</th>
-                <th>Cargo</th>
-                <th>Salário</th>
-                <th>Carga Horária</th>
-                <th>CTPS</th>
+                <th>Paciente</th>
+                <th>Resultado do Procedimento</th>
+                <th>Descrição</th>
+                <th>Enfermeiro</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>Hildebrando</td>
-                <td>Enfermeiro</td>
-                <td>R$50.000</td>
-                <td>510 horas</td>
-                <td>3890128031</td>
+                <td>João Silva</td>
+                <td>Apto</td>
+                <td>O usuário cagou no balde</td>
+                <td>Enf. Mara Vilhosa</td>
                 <td><a href="">Editar</a></td>
                 <td><a href="">Apagar</a></td>
               </tr>

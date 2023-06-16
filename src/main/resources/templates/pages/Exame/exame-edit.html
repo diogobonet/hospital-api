@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,20 +15,20 @@
 
     <main>
             <div class="edit-form">
-                <h1>Cadastrar Cirurgia</h1>
+                <h1>Cadastrar Exame</h1>
                 <form action="">
                     <input type="text" placeholder="Nome do Paciente">
                     <input type="text" placeholder="CPF do Paciente">
-                    <input type="text" placeholder="Nome da Cirurgia">
+                    <input type="text" placeholder="Nome do Exame solicitado">
                     <select name="" id="">
-                        <option value="">Médico</option>
+                        <option value="">Enfermeiro</option>
                         <option value="">Roberto Carlos</option>
                         <option value="">Thomei Leite</option>
                     </select>
                     <input type="date">
-                    <input type="text" placeholder="Horário da Cirurgia" name="" id="">
+                    <input type="text" placeholder="Horário do Exame" name="" id="">
                     <textarea name="" id="" cols="30" rows="10" placeholder="Observações"></textarea>
-                    <button type="submit">Enviar</button>
+                    <button type="submit">Marcar Exame</button>
                 </form>
             </div>
     </main>
