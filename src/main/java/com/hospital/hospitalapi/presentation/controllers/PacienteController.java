@@ -19,17 +19,6 @@ public class PacienteController {
         this.service = service;
     }
 
-    @GetMapping(path = "/obterporid/{id}") // define o caminho da requisição na API
-    public Object ObterPacientePorId(@PathVariable("id") Long id) //define o parâmetro que será utilizado na requisição, definido no caminho
-    {
-        try {
-            return service.ObterPacientePorId(id); // faz a comunicação com o serviço, fazendo referência a um método descrito para buscar um paciente pelo Id retornando este mesmo paciente no retorno da API para visualização
-        }
-        catch (Exception ex){
-            return ex.getMessage();
-        }
-    }
-
     @GetMapping(path = "/obterporcpf/{cpf}") // define o caminho da requisição na API
     public Object ObterPacientePorCpf(@PathVariable("cpf") String cpf) //define o parâmetro que será utilizado na requisição, definido no caminho
     {
@@ -82,11 +71,11 @@ public class PacienteController {
     }
 
 
-    @DeleteMapping(path = "/remover/{id}") // define o caminho da requisição na API
-    public void RemoverPaciente(@PathVariable("id") Long id) //define o parâmetro que será utilizado na requisição, definido no caminho
+    @DeleteMapping(path = "/remover/{cpf}")
+    public void RemoverPaciente(@PathVariable("cpf") String cpf)
     {
         try{
-            service.RemoverPaciente(id); // faz a comunicação com o serviço, utilizando um método descrito para retornar um paciente
+            service.RemoverPaciente(cpf);
         }
         catch (Exception ex){
             ex.getMessage();

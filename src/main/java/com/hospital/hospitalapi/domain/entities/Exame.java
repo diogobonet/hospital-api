@@ -18,7 +18,7 @@ public class Exame extends Procedimento {
     public Exame(
             LocalDate dataAgendada,
             String nome,
-            Paciente paciente,
+            String paciente,
             Funcionario funcionario,
             TipoExameEnum tipo,
             String resultado) {

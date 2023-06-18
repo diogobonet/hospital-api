@@ -20,6 +20,6 @@ public class RelatorioService {
     }
 
     public Object ObterRelatorioPorId(Long id) {
-        return repository.findById(id).orElseThrow(() -> new IllegalStateException("Relatório com Id " + id + "não existe."));
+        return repository.findById(id).orElseThrow(() -> new IllegalStateException("Relatório com Id " + id + " não existe."));
     }
 }

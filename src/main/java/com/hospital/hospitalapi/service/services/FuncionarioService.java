@@ -48,7 +48,7 @@ public class FuncionarioService {
     public Object CriarFuncionario(Funcionario funcionario) {
         Optional<Funcionario> funcPorCpf = repository.ObterFuncionarioPorCpf(funcionario.getCPF());
         if (funcPorCpf.isPresent())
-            throw new IllegalStateException("Funcionário com id " + funcPorCpf.get().getId() + "já existe na base de dados.");
+            throw new IllegalStateException("Funcionário com CPF " + funcPorCpf.get().getCPF() + " já existe na base de dados.");
 
         if (funcionario.getDataNascimento().equals(LocalDate.now()))
             throw new IllegalStateException("Data de nascimento precisa ser maior que a data atual.");
@@ -59,17 +59,9 @@ public class FuncionarioService {
     public void RemoverFuncionarioPorCpf(String cpf) {
         Optional<Funcionario> funcionario = repository.ObterFuncionarioPorCpf(cpf);
         if (funcionario.isPresent())
-            repository.deleteById(funcionario.get().getId());
+            repository.delete(funcionario.get());
         else
             throw new IllegalStateException("Funcionário com o CPF " + cpf + " não existe.");
-    }
-
-    public void RemoverFuncionarioPorId(Long id) {
-        Optional<Funcionario> funcionario = repository.findById(id);
-        if (funcionario.isPresent())
-            repository.deleteById(id);
-        else
-            throw new IllegalStateException("Funcionário com Id " + id + " não existe.");
     }
 
     public Object AlterarSalarioFuncionario(String cpf, double salario) {

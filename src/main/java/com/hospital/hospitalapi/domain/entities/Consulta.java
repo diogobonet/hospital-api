@@ -16,7 +16,7 @@ public class Consulta extends Procedimento {
     public Consulta(
             LocalDate dataAgendada,
             String nome,
-            Paciente paciente,
+            String paciente,
             Funcionario funcionario,
             Medico medicoResponsavel,
             String laudo) {

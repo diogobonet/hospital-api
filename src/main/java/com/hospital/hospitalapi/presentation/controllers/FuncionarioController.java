@@ -60,11 +60,6 @@ public class FuncionarioController {
         service.RemoverFuncionarioPorCpf(cpf);
     }
 
-    @DeleteMapping(path = "/removerporid/{id}")
-    public void RemoverFuncionarioPorId(@PathVariable("id") Long id) {
-        service.RemoverFuncionarioPorId(id);
-    }
-
     @PostMapping("cirurgias/criar")
     public Object CriarCirurgia(@RequestBody Cirurgia cirurgia) {
         try {

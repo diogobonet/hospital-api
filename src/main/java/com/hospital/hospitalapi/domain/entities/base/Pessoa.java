@@ -7,14 +7,11 @@ import java.time.LocalDate;
 @MappedSuperclass
 public abstract class Pessoa {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
-
     private String Nome;
     private LocalDate DataNascimento;
     private String Sexo;
     private String Endereco;
+    @Id
     private String CPF;
 
     public Pessoa() {
@@ -31,14 +28,6 @@ public abstract class Pessoa {
         this.Sexo = sexo;
         this.Endereco = endereco;
         this.CPF = CPF;
-    }
-
-    public Long getId() {
-        return Id;
-    }
-
-    public void setId(Long id) {
-        Id = id;
     }
 
     public String getNome() {

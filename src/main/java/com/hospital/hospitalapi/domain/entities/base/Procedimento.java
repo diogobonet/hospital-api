@@ -12,23 +12,9 @@ public abstract class Procedimento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
-
     private String Nome;
-
-
-    public String getNome() {
-        return Nome;
-    }
-
-    public void setNome(String nome) {
-        Nome = nome;
-    }
-
     private LocalDate DataAgendada;
-
-    @ManyToOne
-    @JoinColumn(name = "PacienteId")
-    private Paciente Paciente;
+    private String Paciente;
 
     @OneToOne
     @JoinColumn(name = "FuncionarioId")
@@ -40,7 +26,7 @@ public abstract class Procedimento {
     public Procedimento(
             LocalDate dataAgendada,
             String nome,
-            Paciente paciente,
+            String paciente,
             Funcionario funcionario) {
         this.DataAgendada = dataAgendada;
         this.Nome = nome;
@@ -56,12 +42,19 @@ public abstract class Procedimento {
         Id = id;
     }
 
+    public String getNome() {
+        return Nome;
+    }
+    public void setNome(String nome) {
+        Nome = nome;
+    }
+
 
     public LocalDate getDataAgendada() {
         return DataAgendada;
     }
 
-    public Paciente getPaciente() {
+    public String getPaciente() {
         return Paciente;
     }
 
@@ -74,7 +67,7 @@ public abstract class Procedimento {
         DataAgendada = dataAgendada;
     }
 
-    public void setPaciente(Paciente paciente) {
+    public void setPaciente(String paciente) {
         Paciente = paciente;
     }
 

@@ -20,7 +20,7 @@ public class Cirurgia extends Procedimento {
     public Cirurgia(
             LocalDate dataAgendada,
             String nome,
-            Paciente paciente,
+            String paciente,
             Funcionario funcionario,
             Medico medicoResponsavel,
             List<String> observacoes) {

@@ -34,7 +34,7 @@ public class MedicoService {
     public Object CriarMedico(Medico medico) {
         Optional<Medico> medicoPorCrm = repository.ObterMedicoPorCrm(medico.getCRM());// faz comunicação com o repositório para reportar um paciente pelo Id dentro da base de dados
         if (medicoPorCrm.isPresent())
-            throw new IllegalStateException("Medico com id " + medicoPorCrm.get().getId() + "já existe na base de dados.");
+            throw new IllegalStateException("Medico com CRM " + medicoPorCrm.get().getCRM() + " já existe na base de dados.");
 
         if (medico.getDataNascimento().equals(LocalDate.now()))
             throw new IllegalStateException("Data de nascimento precisa ser maior que a data atual.");
@@ -45,18 +45,9 @@ public class MedicoService {
     public void RemoverMedicoPorCrm(String crm) {
         Optional<Medico> medico = repository.ObterMedicoPorCrm(crm);
         if (medico.isPresent())
-            repository.deleteById(medico.get().getId());
-        else {
-            throw new IllegalStateException("Médico com o CRM " + crm + " não existe.");
-        }
-    }
-
-    public void RemoverMedicoPorId(Long id) {
-        Optional<Medico> medico = repository.findById(id);
-        if (medico.isPresent())
             repository.delete(medico.get());
         else {
-            throw new IllegalStateException("Médico com Id: " + id + " não existe.");
+            throw new IllegalStateException("Médico com o CRM " + crm + " não existe.");
         }
     }
 

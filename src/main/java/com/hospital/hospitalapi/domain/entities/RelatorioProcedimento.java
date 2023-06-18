@@ -12,12 +12,15 @@ public class RelatorioProcedimento extends Procedimento {
     public RelatorioProcedimento(
             LocalDate dataAgendada,
             String nome,
-            Paciente paciente,
+            String paciente,
             Funcionario funcionario) {
         super(
                 dataAgendada,
                 nome,
                 paciente,
                 funcionario);
+    }
+
+    public RelatorioProcedimento() {
     }
 }

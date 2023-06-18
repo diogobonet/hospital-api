@@ -68,9 +68,4 @@ public class MedicoController {
     public void RemoverMedicoPorCrm(@PathVariable("crm") String crm) {
         service.RemoverMedicoPorCrm(crm);
     }
-
-    @DeleteMapping(path = "/removerporid/{id}")
-    public void RemoverMedicoPorId(@PathVariable("id") Long id){
-        service.RemoverMedicoPorId(id);
-    }
 }
