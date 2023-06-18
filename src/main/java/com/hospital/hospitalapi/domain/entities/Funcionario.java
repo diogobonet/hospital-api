@@ -9,11 +9,11 @@ import java.util.List;
 @Entity
 @Table(name = "Funcionario")
 public class Funcionario extends Pessoa {
-    private String Cargo;
-    private double Salario;
-    private boolean Ativo;
-    private String CargaHoraria;
-    private String CTPS;
+    public String Cargo;
+    public double Salario;
+    public boolean Ativo;
+    public String CargaHoraria;
+    public String CTPS;
 
     @OneToMany
     @JoinColumn(name = "RelatorioId")

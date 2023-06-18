@@ -80,15 +80,14 @@
 <body>
     <header>
         <span class="material-symbols-outlined">medication</span>
-        <a href="">Sair da Conta</a>
+        <a th:href="@{/index}">Voltar ao menu principal</a>
     </header>
 
     <main>
         <div class="top">
             <h1>Funcionários</h1>
-            <a href="">Cadastrar um novo funcionário</a>
+            <a href="/funcionariocadastro">Cadastrar um novo funcionário</a>
         </div>
-
         <h2>Funcionários ativos</h2>
         <table>
             <thead>
@@ -101,12 +100,12 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Hildebrando</td>
-                <td>Enfermeiro</td>
-                <td>R$50.000</td>
-                <td>510 horas</td>
-                <td>3890128031</td>
+              <tr data-th-each="funcionario : ${listafuncionarios}">
+                <td data-th-text="${funcionario.nome}">...</td>
+                <td data-th-text="${funcionario.cargo}">...</td>
+                <td data-th-text="${funcionario.salario}">...</td>
+                <td data-th-text="${funcionario.cargaHoraria}">...</td>
+                <td data-th-text="${funcionario.CTPS}">...</td>
                 <td><a href="">Editar</a></td>
                 <td><a href="">Apagar</a></td>
               </tr>
