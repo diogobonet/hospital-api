@@ -17,12 +17,14 @@ public class Exame extends Procedimento {
 
     public Exame(
             LocalDate dataAgendada,
+            String nome,
             Paciente paciente,
             Funcionario funcionario,
             TipoExameEnum tipo,
             String resultado) {
         super(
                 dataAgendada,
+                nome,
                 paciente,
                 funcionario);
         this.Tipo = tipo;

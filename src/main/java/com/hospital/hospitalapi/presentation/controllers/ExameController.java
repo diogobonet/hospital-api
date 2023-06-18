@@ -30,21 +30,10 @@ public class ExameController {
         }
     }
 
-    @GetMapping
+    @GetMapping(path = "/listar")
     public List<Exame> ListarExames()
     {
         return service.ListarExames();
-    }
-
-    @PostMapping
-    public Object CriarExame(@RequestBody Exame exame)
-    {
-        try{
-            return service.CriarExame(exame);
-        }
-        catch (Exception ex){
-            return ex.getMessage();
-        }
     }
 
     @DeleteMapping(path = "/remover/{id}")

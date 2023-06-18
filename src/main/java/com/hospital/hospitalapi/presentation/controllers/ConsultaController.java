@@ -30,22 +30,13 @@ public class ConsultaController {
         }
     }
 
-    @GetMapping
+    @GetMapping(path = "/listar")
     public List<Consulta> ListarConsultas()
     {
         return service.ListarConsultas();
     }
 
-    @PostMapping
-    public Object CriarConsulta(@RequestBody Consulta consulta)
-    {
-        try{
-            return service.CriarConsulta(consulta);
-        }
-        catch (Exception ex){
-            return ex.getMessage();
-        }
-    }
+
 
     //alterar aqui
 

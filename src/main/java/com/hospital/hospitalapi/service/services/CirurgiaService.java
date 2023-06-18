@@ -29,13 +29,7 @@ public class CirurgiaService {
         return repository.findAll();
     }
 
-    public Object CriarCirurgia(Cirurgia cirurgia) {
-        Optional<Cirurgia> consultaPorId = repository.findById(cirurgia.getId());
-        if (consultaPorId.isPresent())
-            throw new IllegalStateException("Cirurgia com id " + consultaPorId.get().getId() + "já existe na base de dados.");
 
-        return repository.save(cirurgia);
-    }
 
     public void RemoverCirurgia(Long id) {
         boolean existe = repository.existsById(id);

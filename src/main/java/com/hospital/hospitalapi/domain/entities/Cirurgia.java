@@ -19,12 +19,14 @@ public class Cirurgia extends Procedimento {
 
     public Cirurgia(
             LocalDate dataAgendada,
+            String nome,
             Paciente paciente,
             Funcionario funcionario,
             Medico medicoResponsavel,
             List<String> observacoes) {
         super(
                 dataAgendada,
+                nome,
                 paciente,
                 funcionario);
         MedicoResponsavel = medicoResponsavel;

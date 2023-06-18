@@ -29,14 +29,6 @@ public class ExameService {
         return repository.findAll();
     }
 
-    public Object CriarExame(Exame exame) {
-        Optional<Exame> consultaPorId = repository.findById(exame.getId());
-        if (consultaPorId.isPresent())
-            throw new IllegalStateException("Exame com id " + consultaPorId.get().getId() + "já existe na base de dados.");
-
-        return repository.save(exame);
-    }
-
     public void RemoverExame(Long id) {
         boolean existe = repository.existsById(id);
         if (!existe)

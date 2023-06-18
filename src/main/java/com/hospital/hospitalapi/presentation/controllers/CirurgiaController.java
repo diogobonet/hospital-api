@@ -20,7 +20,7 @@ public class CirurgiaController {
     }
 
     @GetMapping(path = "/obterporid/{id}")
-    public Object ObterConsultaPorId(@PathVariable("id") Long id)
+    public Object ObterCirurgiaPorId(@PathVariable("id") Long id)
     {
         try {
             return service.ObterCirurgiaPorId(id);
@@ -30,24 +30,12 @@ public class CirurgiaController {
         }
     }
 
-    @GetMapping
-    public List<Cirurgia> ListarConsultas()
+    @GetMapping(path = "/listar")
+    public List<Cirurgia> ListarCirurgia()
     {
         return service.ListarCirurgias();
     }
 
-    @PostMapping
-    public Object CriarConsulta(@RequestBody Cirurgia cirurgia)
-    {
-        try{
-            return service.CriarCirurgia(cirurgia);
-        }
-        catch (Exception ex){
-            return ex.getMessage();
-        }
-    }
-
-    //alterar aqui
 
     @DeleteMapping(path = "/remover/{id}")
     public void RemoverCirurgia(@PathVariable("id") Long id)

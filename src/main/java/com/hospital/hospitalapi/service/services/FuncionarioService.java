@@ -1,6 +1,12 @@
 package com.hospital.hospitalapi.service.services;
 
+import com.hospital.hospitalapi.domain.entities.Cirurgia;
+import com.hospital.hospitalapi.domain.entities.Consulta;
+import com.hospital.hospitalapi.domain.entities.Exame;
 import com.hospital.hospitalapi.domain.entities.Funcionario;
+import com.hospital.hospitalapi.repository.repositories.CirurgiaRepository;
+import com.hospital.hospitalapi.repository.repositories.ConsultaRepository;
+import com.hospital.hospitalapi.repository.repositories.ExameRepository;
 import com.hospital.hospitalapi.repository.repositories.FuncionarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,10 +18,20 @@ import java.util.Optional;
 @Service
 public class FuncionarioService {
     private final FuncionarioRepository repository;
+    private final CirurgiaRepository cirurgiaRepository;
+    private final ConsultaRepository consultaRepository;
+    private final ExameRepository exameRepository;
 
     @Autowired
-    public FuncionarioService(FuncionarioRepository repository) {
+    public FuncionarioService(
+            FuncionarioRepository repository,
+            CirurgiaRepository cirurgiaRepository,
+            ConsultaRepository consultaRepository,
+            ExameRepository exameRepository) {
         this.repository = repository;
+        this.cirurgiaRepository = cirurgiaRepository;
+        this.consultaRepository = consultaRepository;
+        this.exameRepository = exameRepository;
     }
 
     public Object ObterFuncionarioPorCpf(String cpf) {
@@ -56,8 +72,8 @@ public class FuncionarioService {
             throw new IllegalStateException("Funcionário com Id " + id + " não existe.");
     }
 
-    public Object AlterarSalarioFuncionario(Long id, double salario) {
-        Funcionario funcionario = repository.findById(id).orElseThrow(() -> new IllegalStateException("Funcionário com Id: " + id + " não existe na base de dados."));
+    public Object AlterarSalarioFuncionario(String cpf, double salario) {
+        Funcionario funcionario = repository.ObterFuncionarioPorCpf(cpf).orElseThrow(() -> new IllegalStateException("Funcionário com Id: " + cpf + " não existe na base de dados."));
         if (salario == funcionario.getSalario() || salario <= 0)
             funcionario.setSalario(salario);
         else {
@@ -65,5 +81,29 @@ public class FuncionarioService {
         }
 
         return funcionario;
+    }
+
+    public Object CriarCirurgia(Cirurgia cirurgia) {
+        Optional<Cirurgia> consultaPorId = cirurgiaRepository.findById(cirurgia.getId());
+        if (consultaPorId.isPresent())
+            throw new IllegalStateException("Cirurgia com id " + consultaPorId.get().getId() + "já existe na base de dados.");
+
+        return cirurgiaRepository.save(cirurgia);
+    }
+
+    public Object CriarConsulta(Consulta consulta) {
+        Optional<Consulta> consultaPorId = consultaRepository.findById(consulta.getId());
+        if (consultaPorId.isPresent())
+            throw new IllegalStateException("Consulta com id " + consultaPorId.get().getId() + "já existe na base de dados.");
+
+        return consultaRepository.save(consulta);
+    }
+
+    public Object CriarExame(Exame exame) {
+        Optional<Exame> consultaPorId = exameRepository.findById(exame.getId());
+        if (consultaPorId.isPresent())
+            throw new IllegalStateException("Exame com id " + consultaPorId.get().getId() + "já existe na base de dados.");
+
+        return exameRepository.save(exame);
     }
 }

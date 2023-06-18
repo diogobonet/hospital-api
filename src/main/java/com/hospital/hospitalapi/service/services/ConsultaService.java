@@ -29,13 +29,7 @@ public class ConsultaService {
         return repository.findAll();
     }
 
-    public Object CriarConsulta(Consulta consulta) {
-        Optional<Consulta> consultaPorId = repository.findById(consulta.getId());
-        if (consultaPorId.isPresent())
-            throw new IllegalStateException("Consulta com id " + consultaPorId.get().getId() + "já existe na base de dados.");
 
-        return repository.save(consulta);
-    }
 
     public void RemoverConsulta(Long id) {
         boolean existe = repository.existsById(id);

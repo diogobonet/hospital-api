@@ -1,5 +1,8 @@
 package com.hospital.hospitalapi.presentation.controllers;
 
+import com.hospital.hospitalapi.domain.entities.Cirurgia;
+import com.hospital.hospitalapi.domain.entities.Consulta;
+import com.hospital.hospitalapi.domain.entities.Exame;
 import com.hospital.hospitalapi.domain.entities.Funcionario;
 import com.hospital.hospitalapi.service.services.FuncionarioService;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -19,8 +22,8 @@ public class FuncionarioController {
         this.service = service;
     }
 
-    @GetMapping
-    public List<Funcionario> ListarFuncionarios(){
+    @GetMapping(path = "/listar")
+    public List<Funcionario> ListarFuncionarios() {
         return service.ListarFuncionarios();
     }
 
@@ -42,13 +45,12 @@ public class FuncionarioController {
         }
     }
 
-    @PutMapping(path = "/alterar/{id}")
-    public Object AlterarSalarioFuncionario(@PathVariable("id") Long id,
-                                            @RequestParam(required = true) double salario){
+    @PutMapping(path = "/alterarsalario/{cpf}")
+    public Object AlterarSalarioFuncionario(@PathVariable("cpf") String cpf,
+                                            @RequestParam(required = true) double salario) {
         try {
-            return service.AlterarSalarioFuncionario(id, salario);
-        }
-        catch (Exception ex) {
+            return service.AlterarSalarioFuncionario(cpf, salario);
+        } catch (Exception ex) {
             return ex.getMessage();
         }
     }
@@ -59,7 +61,36 @@ public class FuncionarioController {
     }
 
     @DeleteMapping(path = "/removerporid/{id}")
-    public void RemoverFuncionarioPorId(@PathVariable("id") Long id){
+    public void RemoverFuncionarioPorId(@PathVariable("id") Long id) {
         service.RemoverFuncionarioPorId(id);
+    }
+
+    @PostMapping("cirurgias/criar")
+    public Object CriarCirurgia(@RequestBody Cirurgia cirurgia) {
+        try {
+            return service.CriarCirurgia(cirurgia);
+        } catch (Exception ex) {
+            return ex.getMessage();
+        }
+    }
+
+    @PostMapping("consultas/criar")
+    public Object CriarConsulta(@RequestBody Consulta consulta) {
+        try {
+            return service.CriarConsulta(consulta);
+        } catch (Exception ex) {
+            return ex.getMessage();
+        }
+    }
+
+    @PostMapping("exames/criar")
+    public Object CriarExame(@RequestBody Exame exame)
+    {
+        try{
+            return service.CriarExame(exame);
+        }
+        catch (Exception ex){
+            return ex.getMessage();
+        }
     }
 }

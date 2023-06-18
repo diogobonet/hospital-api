@@ -12,6 +12,18 @@ public abstract class Procedimento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
+
+    private String Nome;
+
+
+    public String getNome() {
+        return Nome;
+    }
+
+    public void setNome(String nome) {
+        Nome = nome;
+    }
+
     private LocalDate DataAgendada;
 
     @ManyToOne
@@ -27,9 +39,11 @@ public abstract class Procedimento {
 
     public Procedimento(
             LocalDate dataAgendada,
+            String nome,
             Paciente paciente,
             Funcionario funcionario) {
         this.DataAgendada = dataAgendada;
+        this.Nome = nome;
         this.Paciente = paciente;
         this.Funcionario = funcionario;
     }
@@ -71,6 +85,8 @@ public abstract class Procedimento {
     @Override
     public String toString() {
         return "Procedimento{" +
+                "Id=" + Id +
+                ", Nome='" + Nome + '\'' +
                 ", DataAgendada=" + DataAgendada +
                 ", Paciente=" + Paciente +
                 ", Funcionario=" + Funcionario +

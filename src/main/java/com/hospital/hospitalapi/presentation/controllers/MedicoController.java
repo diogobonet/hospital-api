@@ -37,7 +37,7 @@ public class MedicoController {
     }
 */
 
-    @GetMapping
+    @GetMapping(path = "/listar")
     public List<Medico> ListarMedicos() {
         return service.ListarMedicos(); // faz a comunicação com o serviço, fazendo referência a um método descrito para buscar todos os pacientes retornando esta mesma lista no retorno da API para visualização
     }

@@ -43,7 +43,33 @@
               </tr>
             </tbody>
           </table>
-          
     </main>
+
+    <script>
+        function carregarFuncionarios() {
+            fetch('/funcionarios')
+                .then(response => response.json())
+                .then(funcionarios => {
+                    const tableBody = document.getElementById('funcionariosTable').getElementsByTagName('tbody')[0];
+                    tableBody.innerHTML = '';
+
+                    funcionarios.forEach(funcionario => {
+                        const row = tableBody.insertRow();
+                        row.innerHTML = `
+                            <td>${funcionario.nome}</td>
+                            <td>${funcionario.cargo}</td>
+                            <td>${funcionario.salario}</td>
+                            <td>${funcionario.cargaHoraria}</td>
+                            <td>${funcionario.ctps}</td>
+                            <td><a href="">Editar</a></td>
+                            <td><a href="">Apagar</a></td>
+                        `;
+                    });
+                })
+                .catch(error => console.error('Erro ao carregar funcionários:', error));
+        }
+
+        document.addEventListener('DOMContentLoaded', carregarFuncionarios);
+    </script>
 </body>
 </html>
