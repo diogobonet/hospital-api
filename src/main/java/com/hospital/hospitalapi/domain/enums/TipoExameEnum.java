@@ -1,7 +1,7 @@
 package com.hospital.hospitalapi.domain.enums;
 
 public enum TipoExameEnum {
-    HEMORGAMA,
+    HEMOGRAMA,
     RADIOGRAFIA,
     TOMOGRAFIA
 }

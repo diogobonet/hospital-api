@@ -1,6 +1,7 @@
 package com.hospital.hospitalapi.service.services;
 
 import com.hospital.hospitalapi.domain.entities.Cirurgia;
+import com.hospital.hospitalapi.domain.entities.Funcionario;
 import com.hospital.hospitalapi.repository.repositories.CirurgiaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,7 +29,9 @@ public class CirurgiaService {
         return repository.findAll();
     }
 
-
+    public Object CriarCirurgia(Cirurgia cirurgia) {
+        return repository.save(cirurgia);
+    }
 
     public void RemoverCirurgia(Long id) {
         boolean existe = repository.existsById(id);

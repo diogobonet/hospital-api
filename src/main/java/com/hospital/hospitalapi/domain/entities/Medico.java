@@ -10,16 +10,11 @@ import java.util.List;
 @Entity
 @Table(name = "Medico")
 public class Medico extends Pessoa {
-    private String CRM;
+    public String CRM;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "Especialidade")
-    private MedicoEspecialidadeEnum Especialidade;
-    private LocalDate HorarioTrabalho;
-
-    @OneToMany
-    @JoinColumn(name = "ConsultaId")
-    private List<Consulta> Consultas;
+    public MedicoEspecialidadeEnum Especialidade;
 
     public Medico (){
     }
@@ -31,9 +26,7 @@ public class Medico extends Pessoa {
             String endereco,
             String CPF,
             String CRM,
-            MedicoEspecialidadeEnum especialidade,
-            LocalDate horarioTrabalho,
-            List<Consulta> consultas) {
+            MedicoEspecialidadeEnum especialidade) {
         super(
                 nome,
                 dataNascimento,
@@ -42,8 +35,6 @@ public class Medico extends Pessoa {
                 CPF);
         this.CRM = CRM;
         this.Especialidade = especialidade;
-        this.HorarioTrabalho = horarioTrabalho;
-        this.Consultas = consultas;
     }
 
     public String getCRM() {
@@ -62,28 +53,11 @@ public class Medico extends Pessoa {
         Especialidade = especialidade;
     }
 
-    public LocalDate getHorarioTrabalho() {
-        return HorarioTrabalho;
-    }
-
-    public void setHorarioTrabalho(LocalDate horarioTrabalho) {
-        HorarioTrabalho = horarioTrabalho;
-    }
-
-    public List<Consulta> getConsultas() {
-        return Consultas;
-    }
-
-    public void setConsultas(List<Consulta> consultas) {
-        Consultas = consultas;
-    }
-
     @Override
     public String toString() {
         return "Medico{" +
                 "CRM='" + CRM + '\'' +
                 ", Especialidade=" + Especialidade +
-                ", HorarioTrabalho=" + HorarioTrabalho +
                 '}';
     }
 }

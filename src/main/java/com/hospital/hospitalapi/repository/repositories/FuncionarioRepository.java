@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface FuncionarioRepository extends JpaRepository<Funcionario, Long> {
+public interface FuncionarioRepository extends JpaRepository<Funcionario, String> {
     @Query("FROM Funcionario f WHERE f.CPF = :cpf")
     Optional<Funcionario> ObterFuncionarioPorCpf(String cpf);
 }

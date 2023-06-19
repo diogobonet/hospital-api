@@ -12,7 +12,7 @@ public abstract class Pessoa {
     private String Sexo;
     private String Endereco;
     @Id
-    private String CPF;
+    public String CPF;
 
     public Pessoa() {
     }

@@ -13,22 +13,18 @@ public class Exame extends Procedimento {
     @Enumerated(EnumType.STRING)
     @Column(name = "Tipo")
     private TipoExameEnum Tipo;
-    private String Resultado;
+    private String Resultado = "Não realizado.";
 
     public Exame(
             LocalDate dataAgendada,
             String nome,
             String paciente,
-            Funcionario funcionario,
-            TipoExameEnum tipo,
-            String resultado) {
+            TipoExameEnum tipo) {
         super(
                 dataAgendada,
                 nome,
-                paciente,
-                funcionario);
+                paciente);
         this.Tipo = tipo;
-        this.Resultado = resultado;
     }
 
     public TipoExameEnum getTipo() {

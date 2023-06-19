@@ -1,6 +1,7 @@
 package com.hospital.hospitalapi.service.services;
 
 import com.hospital.hospitalapi.domain.entities.Paciente;
+import com.hospital.hospitalapi.domain.entities.Relatorio;
 import com.hospital.hospitalapi.domain.enums.PacienteStatusEnum;
 import com.hospital.hospitalapi.repository.repositories.PacienteRepository;
 import jakarta.transaction.Transactional;
@@ -58,15 +59,6 @@ public class PacienteService {
 
             paciente.setEndereco(endereco);
         }
-        return paciente;
-    }
-
-    @Transactional
-    public Object AlterarStatusPaciente(Long id, String status){
-        Paciente paciente = repository.findById(id).orElseThrow(() -> new IllegalStateException("Paciente com o Id " + id + " não existe."));
-        if(status != null)
-            paciente.setStatus(PacienteStatusEnum.valueOf(status));
-
         return paciente;
     }
 

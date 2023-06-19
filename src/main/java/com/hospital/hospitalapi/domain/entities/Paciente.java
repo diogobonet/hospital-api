@@ -10,17 +10,12 @@ import java.util.List;
 @Entity
 @Table(name = "Paciente")
 public class Paciente extends Pessoa {
+
     private boolean PlanoSaude;
-        private List<String> Alergias;
-        private boolean Vivo;
+    private String Alergias;
+    private boolean Vivo = true;
 
-        @Enumerated(EnumType.STRING)
-        @Column(name= "Status")
-        private PacienteStatusEnum Status;
-
-    public Paciente (){
-
-        }
+    public Paciente (){}
 
     public Paciente(
                 String nome,
@@ -28,10 +23,9 @@ public class Paciente extends Pessoa {
                 String sexo,
                 String endereco,
                 String CPF,
-        boolean planoSaude,
-        List<String> alergias,
-        boolean vivo,
-        PacienteStatusEnum status) {
+                boolean planoSaude,
+                String alergias,
+                boolean vivo) {
             super(
                     nome,
                     dataNascimento,
@@ -41,7 +35,6 @@ public class Paciente extends Pessoa {
             this.PlanoSaude = planoSaude;
             this.Alergias = alergias;
             this.Vivo = vivo;
-        this.Status = status;
     }
 
     public boolean isPlanoSaude() {
@@ -52,11 +45,11 @@ public class Paciente extends Pessoa {
         PlanoSaude = planoSaude;
     }
 
-    public List<String> getAlergias() {
+    public String getAlergias() {
         return Alergias;
     }
 
-    public void setAlergias(List<String> alergias) {
+    public void setAlergias(String alergias) {
         Alergias = alergias;
     }
 
@@ -74,15 +67,6 @@ public class Paciente extends Pessoa {
                 "PlanoSaude=" + PlanoSaude +
                 ", Alergias=" + Alergias +
                 ", Vivo=" + Vivo +
-                ", Status=" + Status +
                 '}';
-    }
-
-    public PacienteStatusEnum getStatus() {
-        return Status;
-    }
-
-    public void setStatus(PacienteStatusEnum status) {
-        Status = status;
     }
 }

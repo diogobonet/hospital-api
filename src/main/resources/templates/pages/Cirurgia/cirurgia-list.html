@@ -86,31 +86,29 @@
     <main>
         <div class="top">
             <h1>Cirurgias</h1>
-            <a href="">Agendar uma cirurgia</a>
+            <a href="/cirurgia/cadastro">Agendar uma cirurgia</a>
         </div>
 
         <h2>Cirurgias agendadas</h2>
         <table>
             <thead>
               <tr>
-                <th>Código</th>
+                  <th>Paciente</th>
+                <th>Nome da Cirurgia</th>
                 <th>Data</th>
-                <th>Paciente</th>
                 <th>Médico responsável</th>
                 <th>Observações</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td>001</td>
-                <td>24/02/2023</td>
-                <td>João Silva</td>
-                <td>Dr. Carlos</td>
-                <td>Alergia a pólen</td>
+            <tr data-th-each="cirurgia : ${listacirurgia}">
+                <td data-th-text="${cirurgia.paciente}">...</td>
+                <td data-th-text="${cirurgia.nome}">...</td>
+                <td data-th-text="${cirurgia.dataAgendada}">...</td>
+                <td data-th-text="${cirurgia.medicoResponsavel}">...</td>
+                <td data-th-text="${cirurgia.observacoes}">...</td>
                 <td><a href="">Editar</a></td>
-                <td><a href="">Apagar</a></td>
-              </tr>
-            </tbody>
+                <td><a th:href="@{'/cirurgia/apagar/'+${cirurgia.Id}}">Apagar</a></td>
+            </tr>
           </table>
           
     </main>
