@@ -48,6 +48,28 @@ public class Funcionario extends Pessoa {
         this.RelatoriosAssinados = relatoriosAssinados;
     }
 
+    public Funcionario(
+            String nome,
+            LocalDate dataNascimento,
+            String sexo,
+            String endereco,
+            String CPF,
+            String cargo,
+            double salario,
+            String cargaHoraria,
+            String CTPS) {
+        super(
+                nome,
+                dataNascimento,
+                sexo,
+                endereco,
+                CPF);
+        this.Cargo = cargo;
+        this.Salario = salario;
+        this.CargaHoraria = cargaHoraria;
+        this.CTPS = CTPS;
+    }
+
     public String getCargo() {
         return Cargo;
     }

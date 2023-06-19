@@ -65,14 +65,13 @@
         <span class="material-symbols-outlined">medication</span>
         <a href="/index">Voltar ao menu principal</a>
     </header>
-
     <main>
         <div class="edit-form">
             <h1>Cadastrar Funcionário</h1>
-            <form action="">
-                <input type="text" placeholder="Nome">
-                <input type="text" placeholder="CPF">
-                <select name="">
+            <form method="post" action="/funcionariocadastrar">
+                <input name="nome" type="text" placeholder="Nome">
+                <input name="CPF" type="text" placeholder="CPF">
+                <select name="sexo">
                     <option value="">Selecione o sexo</option>
                     <option value="Homem">Masculino</option>
                     <option value="Mulher">Feminino</option>
@@ -80,11 +79,11 @@
 
                 <div>
                     <label>Data de Nascimento</label>
-                    <input type="date">
+                    <input name="dataNascimento" type="date">
                 </div>
-                <input type="text" placeholder="Endereço">
+                <input name="endereco" type="text" placeholder="Endereço">
                 <h1>Informações contratuais</h1>
-                <select name="">
+                <select name="cargo">
                     <option value="-">Selecione o cargo</option>
                     <option value="Médico(a)">Médico(a)</option>
                     <option value="Enfermeiro(a)">Enfermeiro(a)</option>
@@ -92,9 +91,9 @@
                     <option value="Setor da Limpeza">Setor da Limpeza</option>
                     <option value="Estagiário">Estagiário</option>
                 </select>
-                <input type="text" placeholder="Salário">
-                <input type="text" placeholder="Carga Horária">
-                <input type="text" placeholder="CTPS">
+                <input name="salario" type="text" placeholder="Salário">
+                <input name="cargaHoraria" type="text" placeholder="Carga Horária">
+                <input name="CTPS" type="text" placeholder="CTPS">
                 <button type="submit">Cadastrar Funcionário</button>
             </form>
         </div>

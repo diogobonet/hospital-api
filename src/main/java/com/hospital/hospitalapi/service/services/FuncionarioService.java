@@ -46,12 +46,12 @@ public class FuncionarioService {
     }
 
     public Object CriarFuncionario(Funcionario funcionario) {
-        Optional<Funcionario> funcPorCpf = repository.ObterFuncionarioPorCpf(funcionario.getCPF());
+/*        Optional<Funcionario> funcPorCpf = repository.ObterFuncionarioPorCpf(funcionario.getCPF());
         if (funcPorCpf.isPresent())
             throw new IllegalStateException("Funcionário com CPF " + funcPorCpf.get().getCPF() + " já existe na base de dados.");
 
         if (funcionario.getDataNascimento().equals(LocalDate.now()))
-            throw new IllegalStateException("Data de nascimento precisa ser maior que a data atual.");
+            throw new IllegalStateException("Data de nascimento precisa ser maior que a data atual."); */
 
         return repository.save(funcionario);
     }
