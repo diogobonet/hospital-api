@@ -44,20 +44,20 @@
           border-collapse: collapse;
           margin-bottom: 20px;
         }
-        
+
         th,
         td {
           padding: 10px;
           text-align: left;
           border: 1px solid #ccc;
         }
-        
+
         @media screen and (max-width: 600px) {
           table {
             overflow-x: auto;
             display: block;
           }
-        
+
           th,
           td {
             white-space: nowrap;
@@ -66,7 +66,7 @@
 
       /* EDIT */
       .edit-form {
-        display: flex; flex-direction: column; height: 80vh; 
+        display: flex; flex-direction: column; height: 80vh;
         justify-content: center; align-items: center;
       }
 
@@ -75,43 +75,48 @@
         gap: 20%;
       }
     </style>
-    <title>Exames | HospitalAPI</title>
+    <title>Pacientes | HospitalAPI</title>
 </head>
 <body>
-    <header>
-        <span class="material-symbols-outlined">medication</span>
-        <a href="/index">Voltar ao menu principal</a>
-    </header>
+<header>
+    <span class="material-symbols-outlined">medication</span>
+    <a href="/index">Voltar ao menu principal</a>
+</header>
 
-    <main>
-        <div class="top">
-            <h1>Exames</h1>
-            <a href="/exame/cadastro">Agendar um exame</a>
-        </div>
+<main>
+    <div class="top">
+        <h1>Pacientes</h1>
+        <a href="/paciente/cadastro">Cadastrar Paciente</a>
+    </div>
 
-        <h2>Exames agendados</h2>
-        <table>
-            <thead>
-              <tr>
-                <th>Data</th>
-                <th>Exame</th>
-                <th>Paciente</th>
-                <th>Tipo do exame</th>
-                <th>Resultado</th>
-              </tr>
-            </thead>
-            <tbody>
-            <tr data-th-each="exame : ${listaexames}">
-                <td data-th-text="${exame.getDataAgendada()}">...</td>
-                <td data-th-text="${exame.getNome()}">...</td>
-                <td data-th-text="${exame.getPaciente()}">...</td>
-                <td data-th-text="${exame.getTipo()}">...</td>
-                <td data-th-text="${exame.getResultado()}">...</td>
-                <td><a th:href="@{'/exame/apagar/'+${exame.getId()}}">Apagar</a></td>
-            </tr>
-            </tbody>
-          </table>
-          
-    </main>
+    <h2>Médico</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th>Sexo</th>
+            <th>Endereço</th>
+            <th>Data de Nascimento</th>
+            <th>Status Plano de Saúde</th>
+            <th>Alergias</th>
+            <th>Vivo?</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr data-th-each="paciente : ${listapacientes}">
+            <td data-th-text="${paciente.getNome()}">...</td>
+            <td data-th-text="${paciente.getCPF()}">...</td>
+            <td data-th-text="${paciente.getSexo()}">...</td>
+            <td data-th-text="${paciente.getEndereco()}">...</td>
+            <td data-th-text="${paciente.getDataNascimento()}">...</td>
+            <td data-th-text="${paciente.isPlanoSaude()}">...</td>
+            <td data-th-text="${paciente.getAlergias()}">...</td>
+            <td data-th-text="${paciente.isVivo()}">...</td>
+            <td><a th:href="@{'/paciente/apagar/'+${paciente.getCPF()}}">Apagar</a></td>
+        </tr>
+        </tbody>
+    </table>
+</main>
 </body>
 </html>

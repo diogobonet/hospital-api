@@ -33,13 +33,13 @@
         }
 
         .edit-form {
-            display: flex; flex-direction: column; height: 80vh; 
+            display: flex; flex-direction: column; height: 80vh;
             justify-content: center; align-items: center;
         }
 
         form {
             display: flex; flex-direction: column; gap: 15px;
-        }  
+        }
 
         .row {
             display: flex; flex-direction: row;
@@ -49,7 +49,7 @@
         input, select {
             padding: 5px;
         }
-        
+
         a {
             text-align: center;
         }
@@ -58,28 +58,41 @@
             resize: none; height: 20vh; padding: 10px; width: 30vw;
         }
     </style>
-    <title>Cadastro de Cirurgia | HospitalAPI</title>
+    <title>Cadastro de Paciente | HospitalAPI</title>
 </head>
 <body>
-    <header>
-        <span class="material-symbols-outlined">medication</span>
-        <a href="/index">Voltar ao menu principal</a>
-    </header>
+<header>
+    <span class="material-symbols-outlined">medication</span>
+    <a href="/index">Voltar ao menu principal</a>
+</header>
 
-    <main>
-            <div class="edit-form">
-                <h1>Cadastrar Exame</h1>
-                <form method="POST" action="/exame/cadastrar">
-                    <input name="dataAgendada" type="date">
-                    <select name="Cpf">
-                        <option th:each="paciente : ${listapacientes}" th:value="${paciente.getCPF()}" th:text="${paciente.getCPF()}"></option>
-                    </select>
-                    <select name="tipoExame">
-                        <option th:each="exame : ${T(com.hospital.hospitalapi.domain.enums.TipoExameEnum).values()}" th:value="${exame}" th:text="${exame}"></option>
-                    </select>
-                    <button type="submit">Marcar Exame</button>
-                </form>
+<main>
+    <div class="edit-form">
+        <h1>Paciente</h1>
+        <form method="POST" action="/paciente/cadastrar">
+            <input name="Nome" type="text" placeholder="Nome do Paciente">
+            <input name="CPF" type="text" placeholder="CPF do Paciente">
+            <input name="Endereco" type="text" placeholder="Endereço">
+            <select name="Sexo">
+                <option value="-">Selecione uma opção</option>
+                <option value="Masculino">Masculino</option>
+                <option value="Feminino">Feminino</option>
+            </select>
+            <div class="row">
+                <label>Data de Nascimento</label>
+                <input name="dataNascimento" type="date">
             </div>
-    </main>
+            <div>
+                <label>Possui plano de saúde?</label>
+                <select name="PlanoSaude">
+                    <option value="True">Sim</option>
+                    <option value="False">Não</option>
+                </select>
+            </div>
+            <textarea name="Alergias" cols="30" rows="10" placeholder="Alergias"></textarea>
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+</main>
 </body>
 </html>

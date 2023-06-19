@@ -1,6 +1,7 @@
 package com.hospital.hospitalapi.presentation.controllers;
 
 import com.hospital.hospitalapi.domain.entities.Cirurgia;
+import com.hospital.hospitalapi.domain.entities.Funcionario;
 import com.hospital.hospitalapi.service.services.CirurgiaService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,15 @@ public class CirurgiaController {
             return service.ObterCirurgiaPorId(id);
         }
         catch (Exception ex){
+            return ex.getMessage();
+        }
+    }
+
+    @PostMapping(path = "/criar")
+    public Object CriarCirurgia(@RequestBody Cirurgia cirurgia) {
+        try {
+            return service.CriarCirurgia(cirurgia);
+        } catch (Exception ex) {
             return ex.getMessage();
         }
     }

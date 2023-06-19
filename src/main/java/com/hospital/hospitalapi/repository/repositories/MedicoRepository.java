@@ -8,7 +8,7 @@ import com.hospital.hospitalapi.domain.entities.Medico;
 import java.util.Optional;
 
 @Repository
-public interface MedicoRepository extends JpaRepository<Medico, Long> {
+public interface MedicoRepository extends JpaRepository<Medico, String> {
     @Query("FROM Medico m WHERE m.CRM = :crm")
     Optional<Medico> ObterMedicoPorCrm(String crm);
 }

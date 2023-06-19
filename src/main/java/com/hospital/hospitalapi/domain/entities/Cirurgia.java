@@ -12,7 +12,7 @@ public class Cirurgia extends Procedimento {
     @ManyToOne
     @JoinColumn(name = "MedicoId")
     private Medico MedicoResponsavel;
-    private List<String> Observacoes;
+    private String Observacoes;
 
     public Cirurgia (){
     }
@@ -21,14 +21,12 @@ public class Cirurgia extends Procedimento {
             LocalDate dataAgendada,
             String nome,
             String paciente,
-            Funcionario funcionario,
             Medico medicoResponsavel,
-            List<String> observacoes) {
+            String observacoes) {
         super(
                 dataAgendada,
                 nome,
-                paciente,
-                funcionario);
+                paciente);
         MedicoResponsavel = medicoResponsavel;
         Observacoes = observacoes;
     }
@@ -41,11 +39,11 @@ public class Cirurgia extends Procedimento {
         MedicoResponsavel = medicoResponsavel;
     }
 
-    public List<String> getObservacoes() {
+    public String getObservacoes() {
         return Observacoes;
     }
 
-    public void setObservacoes(List<String> observacoes) {
+    public void setObservacoes(String observacoes) {
         Observacoes = observacoes;
     }
 

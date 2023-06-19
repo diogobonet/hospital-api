@@ -69,18 +69,16 @@
     <main>
             <div class="edit-form">
                 <h1>Cadastrar Cirurgia</h1>
-                <form action="">
-                    <input type="text" placeholder="Nome do Paciente">
-                    <input type="text" placeholder="CPF do Paciente">
-                    <input type="text" placeholder="Nome da Cirurgia">
-                    <select name="" id="">
-                        <option value="">Médico</option>
-                        <option value="">Roberto Carlos</option>
-                        <option value="">Thomei Leite</option>
+                <form method="post" action="/cirurgia/cadastrar">
+                    <select name="Cpf">
+                        <option th:each="paciente : ${listapacientes}" th:value="${paciente.getCPF()}" th:text="${paciente.getCPF()}"></option>
                     </select>
-                    <input type="date">
-                    <input type="text" placeholder="Horário da Cirurgia" name="" id="">
-                    <textarea name="" id="" cols="30" rows="10" placeholder="Observações"></textarea>
+                    <select name="Crm">
+                        <option th:each="medico : ${listamedicos}" th:value="${medico.CRM}" th:text="${medico.CRM}"></option>
+                    </select>
+                    <input name="nome" type="text" placeholder="Nome da Cirurgia">
+                    <input name="dataAgendada" type="date">
+                    <textarea name="observacoes" cols="30" rows="10" placeholder="Observações"></textarea>
                     <button type="submit">Enviar</button>
                 </form>
             </div>

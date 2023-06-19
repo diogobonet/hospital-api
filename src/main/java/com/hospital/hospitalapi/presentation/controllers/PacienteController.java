@@ -1,6 +1,7 @@
 package com.hospital.hospitalapi.presentation.controllers;
 
 import com.hospital.hospitalapi.domain.entities.Paciente;
+import com.hospital.hospitalapi.domain.entities.Relatorio;
 import com.hospital.hospitalapi.service.services.PacienteService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,16 +42,6 @@ public class PacienteController {
     {
         try{
             return service.CriarPaciente(paciente); // faz a comunicação com o serviço, fazendo referência a um método descrito para criar um paciente retornando este mesmo paciente no retorno da API para visualização
-        }
-        catch (Exception ex){
-            return ex.getMessage();
-        }
-    }
-    @PutMapping(path = "/alterarstatus/{id}")
-    public Object AlterarStatusPaciente(@PathVariable("id") Long id,
-                                        @RequestParam(required = true) String status){
-        try{
-            return service.AlterarStatusPaciente(id, status);
         }
         catch (Exception ex){
             return ex.getMessage();

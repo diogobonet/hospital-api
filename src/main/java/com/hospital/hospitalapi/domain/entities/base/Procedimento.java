@@ -11,14 +11,10 @@ public abstract class Procedimento {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    public Long Id;
     private String Nome;
     private LocalDate DataAgendada;
     private String Paciente;
-
-    @OneToOne
-    @JoinColumn(name = "FuncionarioId")
-    private Funcionario Funcionario;
 
     public Procedimento() {
     }
@@ -26,12 +22,10 @@ public abstract class Procedimento {
     public Procedimento(
             LocalDate dataAgendada,
             String nome,
-            String paciente,
-            Funcionario funcionario) {
+            String paciente) {
         this.DataAgendada = dataAgendada;
         this.Nome = nome;
         this.Paciente = paciente;
-        this.Funcionario = funcionario;
     }
 
     public Long getId() {
@@ -45,10 +39,10 @@ public abstract class Procedimento {
     public String getNome() {
         return Nome;
     }
+
     public void setNome(String nome) {
         Nome = nome;
     }
-
 
     public LocalDate getDataAgendada() {
         return DataAgendada;
@@ -58,21 +52,12 @@ public abstract class Procedimento {
         return Paciente;
     }
 
-    public Funcionario getFuncionario() {
-        return Funcionario;
-    }
-
-
     public void setDataAgendada(LocalDate dataAgendada) {
         DataAgendada = dataAgendada;
     }
 
     public void setPaciente(String paciente) {
         Paciente = paciente;
-    }
-
-    public void setFuncionario(Funcionario funcionario) {
-        Funcionario = funcionario;
     }
 
     @Override
@@ -82,7 +67,6 @@ public abstract class Procedimento {
                 ", Nome='" + Nome + '\'' +
                 ", DataAgendada=" + DataAgendada +
                 ", Paciente=" + Paciente +
-                ", Funcionario=" + Funcionario +
                 '}';
     }
 }

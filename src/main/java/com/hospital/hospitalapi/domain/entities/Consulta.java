@@ -17,14 +17,12 @@ public class Consulta extends Procedimento {
             LocalDate dataAgendada,
             String nome,
             String paciente,
-            Funcionario funcionario,
             Medico medicoResponsavel,
             String laudo) {
         super(
                 dataAgendada,
                 nome,
-                paciente,
-                funcionario);
+                paciente);
         this.MedicoResponsavel = medicoResponsavel;
         this.Laudo = laudo;
     }
