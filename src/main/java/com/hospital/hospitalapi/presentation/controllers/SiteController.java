@@ -18,12 +18,37 @@ import java.util.List;
 @Controller
 public class SiteController {
     private final FuncionarioController funcionarioController;
+<<<<<<< HEAD
     private final FuncionarioRepository repository;
 
     @Autowired
     public SiteController(FuncionarioController funcionarioController, FuncionarioRepository funcionarioRepository){
         this.funcionarioController = funcionarioController;
         this.repository = funcionarioRepository;
+=======
+    private final CirurgiaController cirurgiaController;
+    private final ConsultaController consultaController;
+    private final ExameController exameController;
+    private final MedicoController medicoController;
+    private final PacienteController pacienteController;
+    private final RelatorioController relatorioController;
+
+    public SiteController(
+            FuncionarioController funcionarioController,
+            CirurgiaController cirurgiaController,
+            ConsultaController consultaController,
+            ExameController exameController,
+            MedicoController medicoController,
+            PacienteController pacienteController,
+            RelatorioController relatorioController) {
+        this.funcionarioController = funcionarioController;
+        this.cirurgiaController = cirurgiaController;
+        this.consultaController = consultaController;
+        this.exameController = exameController;
+        this.medicoController = medicoController;
+        this.pacienteController = pacienteController;
+        this.relatorioController = relatorioController;
+>>>>>>> 1be5479ec33f7f7a33e91ae9f9e2526d13bcd0d0
     }
 
     @GetMapping("/index")
